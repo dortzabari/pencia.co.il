@@ -47,7 +47,7 @@
            HEADER
            ═══════════════════════════════════════ */
         .header {
-            position: fixed;
+            position: absolute;
             top: 0; right: 0; left: 0;
             z-index: 1000;
             background: transparent;
@@ -107,13 +107,13 @@
         .nav-links a:hover::after { width: 100%; }
         .nav-links .nav-en {
             font-size: 0.78rem;
-            padding: 0.3rem 1rem;
-            border: 1px solid rgba(201,165,92,0.25);
-            border-radius: 100px;
-            color: var(--gold);
+            padding: 0;
+            border: none;
+            color: rgba(255,255,255,0.6);
         }
-        .nav-links .nav-en:hover { background: rgba(201,165,92,0.08); }
+        .nav-links .nav-en:hover { color: var(--gold-light); }
         .nav-links .nav-en::after { display: none; }
+        .nav-links li:last-child { margin-right: auto; margin-left: 0; }
 
         .burger {
             display: none;
@@ -334,24 +334,23 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
             padding: 4rem 3rem;
-            background: var(--navy);
+            background: var(--warm-white);
         }
 
-        .about .section-header { text-align: right; margin-bottom: 2rem; }
-        .about .section-title { color: #fff; }
+        .about .section-header { text-align: center; margin-bottom: 2rem; }
+        .about .section-title { color: var(--text-primary); }
 
         .about-content {
             max-width: 500px;
-            text-align: right;
-            margin-right: 0;
-            margin-left: auto;
+            text-align: center;
         }
 
         .about-name {
             font-family: 'Suez One', serif;
             font-size: 1.8rem;
-            color: #fff;
+            color: var(--text-primary);
             margin-bottom: 0.3rem;
         }
         .about-role {
@@ -363,19 +362,19 @@
 
         .about-credentials {
             font-size: 0.92rem;
-            color: rgba(255,255,255,0.75);
+            color: var(--text-secondary);
             line-height: 1.85;
             margin-bottom: 1.5rem;
             padding: 1.2rem 1.5rem;
-            background: rgba(255,255,255,0.06);
+            background: var(--cream);
             border-radius: var(--radius);
-            border-right: 3px solid var(--gold);
-            text-align: right;
+            text-align: center;
         }
 
         .cert-logos {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 1.5rem;
             margin-bottom: 2rem;
         }
@@ -384,20 +383,19 @@
             width: auto;
             opacity: 0.85;
             transition: var(--transition);
-            filter: brightness(1.2);
         }
         .cert-logo-img:hover { opacity: 1; }
 
         .about-bio {
             font-size: 0.95rem;
-            color: rgba(255,255,255,0.7);
+            color: var(--text-secondary);
             line-height: 1.9;
         }
 
         /* ═══════════════════════════════════════
            SERVICES
            ═══════════════════════════════════════ */
-        .services { background: var(--cream); }
+        .services { background: var(--warm-white); min-height: 892px; }
 
         .services-grid {
             display: grid;
@@ -406,7 +404,7 @@
         }
 
         .service-card {
-            background: var(--warm-white);
+            background: var(--cream);
             border-radius: var(--radius);
             padding: 2.2rem 1.8rem;
             text-align: center;
@@ -600,7 +598,7 @@
         .calc-result-number .currency {
             font-size: 0.5em;
             color: var(--gold-light);
-            vertical-align: super;
+            vertical-align: baseline;
         }
 
         .calc-result-sub {
@@ -733,6 +731,7 @@
             gap: 1.5rem;
             width: max-content;
             will-change: transform;
+            direction: rtl;
         }
 
         .testimonial-card {
@@ -785,19 +784,20 @@
         /* ═══════════════════════════════════════
            CONTACT
            ═══════════════════════════════════════ */
-        .contact { background: var(--cream); }
+        .contact { background: var(--warm-white); min-height: 715px; }
 
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
-            align-items: start;
+            align-items: stretch;
         }
 
         .contact-form-card {
             background: var(--warm-white);
             border-radius: var(--radius);
             padding: 2.5rem;
+            border: 1px solid var(--border-subtle);
             box-shadow: var(--shadow-md);
         }
         .contact-form { display: flex; flex-direction: column; gap: 1rem; }
@@ -849,11 +849,12 @@
             text-decoration: none;
             color: var(--text-primary);
             transition: var(--transition);
-            border: 1px solid transparent;
+            border: 1px solid var(--border-subtle);
+            box-shadow: var(--shadow-md);
         }
         .contact-info-item:hover {
             border-color: var(--border-subtle);
-            box-shadow: var(--shadow-sm);
+            box-shadow: var(--shadow-lg);
             transform: translateX(-4px);
         }
 
@@ -877,29 +878,26 @@
            FOOTER
            ═══════════════════════════════════════ */
         .footer {
-            background: var(--navy);
+            background: var(--warm-white);
             padding: 2rem;
+            border-top: none;
         }
         .footer-inner {
             max-width: 1200px;
             margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            text-align: center;
         }
-        .footer-logo {
-            font-family: 'Suez One', serif;
-            font-size: 1.1rem;
-            color: var(--gold);
-        }
-        .footer-links { display: flex; gap: 2rem; list-style: none; }
+        .footer-links { list-style: none; }
         .footer-links a {
-            color: rgba(255,255,255,0.4);
+            color: var(--text-light);
             text-decoration: none;
             font-size: 0.82rem;
             transition: var(--transition);
         }
-        .footer-links a:hover { color: var(--gold-light); }
+        .footer-copy {
+            font-size: 0.82rem;
+            color: var(--text-light);
+        }
 
         /* ═══════════════════════════════════════
            WHATSAPP FLOAT
@@ -1036,7 +1034,7 @@
             .about { grid-template-columns: 1fr; min-height: auto; }
             .about-image-half { height: 50vh; }
             .about-text-half { padding: 3rem 1.5rem; }
-            .about-credentials { text-align: right; }
+            .about-credentials { text-align: center; }
             .calc-breakdown { grid-template-columns: 1fr; }
         }
     </style>
@@ -1057,7 +1055,7 @@
                     <li><a href="#calculator" data-i18n="nav_calc">מחשבון פנסיוני</a></li>
                     <li><a href="#Testimonials" data-i18n="nav_testimonials">ממליצים</a></li>
                     <li><a href="#Contact" data-i18n="nav_contact">שמרו על קשר</a></li>
-                    <li><a href="javascript:void(0)" class="nav-en" id="langToggle" onclick="toggleLang()">English</a></li>
+                    <li><a href="javascript:void(0)" class="nav-en" id="langToggle" onclick="toggleLang()">EN</a></li>
                 </ul>
             </nav>
             <button class="burger" id="burger" aria-label="תפריט">
@@ -1076,7 +1074,7 @@
         <a href="#calculator" class="nav-mobile-link" data-i18n="nav_calc">מחשבון פנסיוני</a>
         <a href="#Testimonials" class="nav-mobile-link" data-i18n="nav_testimonials">ממליצים</a>
         <a href="#Contact" class="nav-mobile-link" data-i18n="nav_contact">שמרו על קשר</a>
-        <a href="javascript:void(0)" class="nav-mobile-link" onclick="toggleLang()" data-i18n="lang_toggle">English</a>
+        <a href="javascript:void(0)" class="nav-mobile-link" onclick="toggleLang()" data-i18n="lang_toggle">EN</a>
     </div>
 
     <!-- ═══ HERO ═══ -->
@@ -1116,8 +1114,8 @@
             <div class="about-content reveal">
                 <h3 class="about-name" data-i18n="about_name">טובי צברי</h3>
                 <p class="about-role" data-i18n="about_role">מתכנן פיננסי</p>
-                <div class="about-credentials" data-i18n="about_creds">
-                    חבר באיגוד המתכננים הפיננסיים בישראל (UFPI) בעל הכשרת CFP&nbsp;(Certified Financial Planner) מטעם המועצה הבינלאומית לתכנון פיננסי, ההסמכה המקצועית הגבוהה ביותר בתחום.
+                <div class="about-credentials" data-i18n="about_creds" data-i18n-html="1">
+                    חבר באיגוד המתכננים הפיננסיים בישראל (UFPI)<br>בעל הכשרת CFP&nbsp;(Certified Financial Planner) מטעם המועצה הבינלאומית לתכנון פיננסי, ההסמכה המקצועית הגבוהה ביותר בתחום.
                 </div>
                 <div class="cert-logos">
                     <img src="https://fpai.co.il/wp-content/uploads/2020/03/CFP-FCL-N-300x210.png" alt="CFP Logo" class="cert-logo-img" onerror="this.outerHTML='<span style=\'padding:0.5rem 1.2rem;border:1px solid rgba(201,165,92,0.15);border-radius:8px;font-size:0.82rem;font-weight:600;color:#142240\'>CFP</span>'">
@@ -1279,67 +1277,67 @@
               <div class="testimonials-track" id="testimonialTrack">
                 <div class="testimonial-card">
                     <div class="testimonial-quote-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg></div>
-                    <p class="testimonial-text">לאחר יותר מ־20 שנים כשכיר הייתי זקוק למישהו שיעשה לי סדר בכל הביטוחים השונים ולהבין מה יש בתכנית הפנסיה ואיך להתמודד לקראת השלב הבא בחיי. טובי הגיח כמלאך שסייע לא רק להבין מה יש ומה מגיע לי, אלא גם ליווה אותי צעד אחר צעד. הידע, הניסיון, האמינות, המקצוענות של טובי נתנו לי להבין שיש פה איש מקצוע נדיר, איכותי ואמין.</p>
+                    <p class="testimonial-text" data-i18n="t1_text">לאחר יותר מ־20 שנים כשכיר הייתי זקוק למישהו שיעשה לי סדר בכל הביטוחים השונים ולהבין מה יש בתכנית הפנסיה ואיך להתמודד לקראת השלב הבא בחיי. טובי הגיח כמלאך שסייע לא רק להבין מה יש ומה מגיע לי, אלא גם ליווה אותי צעד אחר צעד. הידע, הניסיון, האמינות, המקצוענות של טובי נתנו לי להבין שיש פה איש מקצוע נדיר, איכותי ואמין.</p>
                     <div class="testimonial-author">
-                        <div class="author-avatar">ס</div>
+                        <div class="author-avatar" data-i18n="t1_av">ס</div>
                         <div class="author-info">
-                            <span class="author-name">סימון מתן</span>
-                            <span class="author-title">מנהל בכיר פרש מחברת 888</span>
+                            <span class="author-name" data-i18n="t1_name">סימון מתן</span>
+                            <span class="author-title" data-i18n="t1_role">מנהל בכיר פרש מחברת 888</span>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-quote-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg></div>
-                    <p class="testimonial-text">חבר קרוב המליץ לי לגשת לטובי. מיד בפגישה הראשונה הבנתי שמולי נמצא איש מקצועי עם ניסיון בלתי רגיל בביטוח ופיננסים ומעבר לזה איש נעים וכיף לשוחח ולדבר. טובי הסביר בצורה עניינית ומאוד ברורה מה צריך לעשות, עשה לי סדר בכל הפוליסות שחלקן לא ידעתי על קיומן. שמח שהטיפול היה אמין, מסור ומקצועי. לא יודע מה הייתי עושה בלעדיו.</p>
+                    <p class="testimonial-text" data-i18n="t2_text">חבר קרוב המליץ לי לגשת לטובי. מיד בפגישה הראשונה הבנתי שמולי נמצא איש מקצועי עם ניסיון בלתי רגיל בביטוח ופיננסים ומעבר לזה איש נעים וכיף לשוחח ולדבר. טובי הסביר בצורה עניינית ומאוד ברורה מה צריך לעשות, עשה לי סדר בכל הפוליסות שחלקן לא ידעתי על קיומן. שמח שהטיפול היה אמין, מסור ומקצועי. לא יודע מה הייתי עושה בלעדיו.</p>
                     <div class="testimonial-author">
-                        <div class="author-avatar">מ</div>
+                        <div class="author-avatar" data-i18n="t2_av">מ</div>
                         <div class="author-info">
-                            <span class="author-name">מיכאל בן-דוד</span>
-                            <span class="author-title">פורש משהב"ט</span>
+                            <span class="author-name" data-i18n="t2_name">מיכאל בן-דוד</span>
+                            <span class="author-title" data-i18n="t2_role">פורש משהב"ט</span>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-quote-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg></div>
-                    <p class="testimonial-text">מועד הפרישה שלי התקרב, התייעצתי עם מספר גורמים עד שהגעתי לטובי. היו לי המון התלבטויות, איך לפרוש? ומתי? בכלל, כיצד מתכוננים? טובי פרש בפניי את כל האפשרויות השונות, הציע לי פתרונות יוצאים מהכלל שאימצתי את כולם. ליווה את כל מהלך הפרישה שלי באופן מקצועי, היה זמין לאורך כל המהלך וגם אחרי. לכל מי שלפני פרישה ממליץ לגשת לטובי.</p>
+                    <p class="testimonial-text" data-i18n="t3_text">מועד הפרישה שלי התקרב, התייעצתי עם מספר גורמים עד שהגעתי לטובי. היו לי המון התלבטויות, איך לפרוש? ומתי? בכלל, כיצד מתכוננים? טובי פרש בפניי את כל האפשרויות השונות, הציע לי פתרונות יוצאים מהכלל שאימצתי את כולם. ליווה את כל מהלך הפרישה שלי באופן מקצועי, היה זמין לאורך כל המהלך וגם אחרי. לכל מי שלפני פרישה ממליץ לגשת לטובי.</p>
                     <div class="testimonial-author">
-                        <div class="author-avatar">מ</div>
+                        <div class="author-avatar" data-i18n="t3_av">מ</div>
                         <div class="author-info">
-                            <span class="author-name">מאיר פרץ</span>
-                            <span class="author-title">פורש בנק לאומי</span>
+                            <span class="author-name" data-i18n="t3_name">מאיר פרץ</span>
+                            <span class="author-title" data-i18n="t3_role">פורש בנק לאומי</span>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-quote-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg></div>
-                    <p class="testimonial-text">טובי ליווה אותי ואת אשתי לאורך כל תהליך הפרישה. בזכות הייעוץ שלו חסכנו עשרות אלפי שקלים במיסים שלא ידענו שאנחנו זכאים להקלות בהם. מקצוען אמיתי שפועל אך ורק לטובת הלקוח.</p>
+                    <p class="testimonial-text" data-i18n="t4_text">טובי ליווה אותי ואת אשתי לאורך כל תהליך הפרישה. בזכות הייעוץ שלו חסכנו עשרות אלפי שקלים במיסים שלא ידענו שאנחנו זכאים להקלות בהם. מקצוען אמיתי שפועל אך ורק לטובת הלקוח.</p>
                     <div class="testimonial-author">
-                        <div class="author-avatar">י</div>
+                        <div class="author-avatar" data-i18n="t4_av">י</div>
                         <div class="author-info">
-                            <span class="author-name">יוסי כהן</span>
-                            <span class="author-title">פורש מרפאל</span>
+                            <span class="author-name" data-i18n="t4_name">יוסי כהן</span>
+                            <span class="author-title" data-i18n="t4_role">פורש מרפאל</span>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-quote-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg></div>
-                    <p class="testimonial-text">הגעתי לטובי בהמלצה חמה של חבר. מהרגע הראשון הרגשתי ביטחון מלא. הוא בנה לי תכנית פרישה מסודרת, טיפל בכל הניירת מול קרנות הפנסיה וחברות הביטוח, ולא הפסיק עד שהכל היה מושלם. ממליצה בחום.</p>
+                    <p class="testimonial-text" data-i18n="t5_text">הגעתי לטובי בהמלצה חמה של חבר. מהרגע הראשון הרגשתי ביטחון מלא. הוא בנה לי תכנית פרישה מסודרת, טיפל בכל הניירת מול קרנות הפנסיה וחברות הביטוח, ולא הפסיק עד שהכל היה מושלם. ממליצה בחום.</p>
                     <div class="testimonial-author">
-                        <div class="author-avatar">ר</div>
+                        <div class="author-avatar" data-i18n="t5_av">ר</div>
                         <div class="author-info">
-                            <span class="author-name">רונית לוי</span>
-                            <span class="author-title">פורשת ממשרד החינוך</span>
+                            <span class="author-name" data-i18n="t5_name">רונית לוי</span>
+                            <span class="author-title" data-i18n="t5_role">פורשת ממשרד החינוך</span>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-quote-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg></div>
-                    <p class="testimonial-text">כשפרשתי מצה"ל לא ידעתי מאיפה מתחילים. טובי לקח את כל הסיפור על עצמו — מיפה את כל הזכויות שלי, תכנן את מבנה ההכנסות באופן אופטימלי, ועזר לי להימנע מטעויות שהיו עולות לי הון. תודה מכל הלב.</p>
+                    <p class="testimonial-text" data-i18n="t6_text">כשפרשתי מצה"ל לא ידעתי מאיפה מתחילים. טובי לקח את כל הסיפור על עצמו — מיפה את כל הזכויות שלי, תכנן את מבנה ההכנסות באופן אופטימלי, ועזר לי להימנע מטעויות שהיו עולות לי הון. תודה מכל הלב.</p>
                     <div class="testimonial-author">
-                        <div class="author-avatar">א</div>
+                        <div class="author-avatar" data-i18n="t6_av">א</div>
                         <div class="author-info">
-                            <span class="author-name">אבי דהן</span>
-                            <span class="author-title">קצין בכיר בדימוס, צה"ל</span>
+                            <span class="author-name" data-i18n="t6_name">אבי דהן</span>
+                            <span class="author-title" data-i18n="t6_role">קצין בכיר בדימוס, צה"ל</span>
                         </div>
                     </div>
                 </div>
@@ -1355,7 +1353,6 @@
             <div class="section-header reveal">
                 <h2 class="section-title" data-i18n="contact_title">אשמח לעמוד לרשותך</h2>
                 <p class="section-subtitle" data-i18n="contact_subtitle">רוצה לדעת מידע נוסף? או לשאול שאלה? השאירו פרטים ואחזור אליכם בהקדם</p>
-                <div class="gold-line"></div>
             </div>
             <div class="contact-grid">
                 <div class="contact-form-card reveal">
@@ -1401,11 +1398,7 @@
     <!-- ═══ FOOTER ═══ -->
     <footer class="footer">
         <div class="footer-inner">
-            <span class="footer-logo">טובי צברי</span>
-            <ul class="footer-links">
-                <li><a href="#" data-i18n="f_access">הצהרת נגישות</a></li>
-                <li><a href="#" data-i18n="f_rights">כל הזכויות שמורות</a></li>
-            </ul>
+            <p class="footer-copy" data-i18n="f_rights">כל הזכויות שמורות טובי צברי 2026 ©</p>
         </div>
     </footer>
 
@@ -1530,8 +1523,11 @@
 
             document.getElementById('monthlyPension').innerHTML =
                 '<span class="currency">₪</span>' + fmt(monthlyPension);
+            var lang = document.documentElement.lang || 'he';
             document.getElementById('replacementRate').textContent =
-                'שיעור החלפה: ' + replacementRate + '% מהשכר';
+                lang === 'en'
+                ? 'Replacement rate: ' + replacementRate + '% of salary'
+                : 'שיעור החלפה: ' + replacementRate + '% מהשכר';
             document.getElementById('totalSavings').textContent = '₪' + fmt(futureValue);
             document.getElementById('yearsLeft').textContent = years;
 
@@ -1634,7 +1630,7 @@
             nav_calc: 'Pension Calculator',
             nav_testimonials: 'Testimonials',
             nav_contact: 'Contact',
-            lang_toggle: 'עברית',
+            lang_toggle: 'HE',
             hero_label: 'Certified Financial Planner (CFP)',
             hero_title: 'Approaching <span>Retirement?</span>',
             hero_text1: 'Retirement is the most significant financial decision you will ever make.<br>Assembling the right components for a retirement plan requires skill and experience.',
@@ -1644,7 +1640,7 @@
             about_title: 'Trust. Experience. Professionalism.',
             about_name: 'Tuvi Tzabari',
             about_role: 'Financial Planner',
-            about_creds: 'Member of the Financial Planners Association of Israel (UFPI), holding a CFP\u00A0(Certified Financial Planner) certification from the International Council for Financial Planning — the highest professional accreditation in the field.',
+            about_creds: 'Member of the Financial Planners Association of Israel (UFPI)<br>Holding a CFP\u00A0(Certified Financial Planner) certification from the International Council for Financial Planning — the highest professional accreditation in the field.',
             about_bio: 'As a veteran financial planner, I help my clients optimally plan their financial lives after retirement for themselves and their families. From 1990 to 2011, I was the owner of a successful insurance agency. I decided to change direction due to requests from dozens of people seeking guidance and assistance in the complex retirement process. I find great satisfaction and purpose in standing by my clients.',
             svc_title: 'How Can I Help You?',
             svc_subtitle: 'In four key areas',
@@ -1672,6 +1668,18 @@
             calc_disclaimer: '* This calculation is an estimate only and does not constitute financial advice. Actual results may vary depending on market conditions, management fees, and other variables. For precise planning, contact us for a personal consultation.',
             quote: 'People in their golden years have worked hard, raised families and accumulated rich life experience, yet <strong>their future is still ahead of them.</strong> They deserve to live comfortably, with minimal worries. They deserve to <strong>continue fulfilling dreams.</strong>',
             test_title: 'Client Testimonials',
+            t1_text: 'After more than 20 years as a salaried employee, I needed someone to organize all my various insurance policies and understand my pension plan. Tuvi appeared like an angel who not only helped me understand what I had and what I was entitled to, but also guided me step by step. His knowledge, experience, reliability, and professionalism showed me this is a rare, quality, and trustworthy professional.',
+            t1_av: 'S', t1_name: 'Simon Matan', t1_role: 'Senior Manager, retired from 888',
+            t2_text: 'A close friend recommended I go to Tuvi. From the very first meeting I understood I was dealing with a professional with extraordinary experience in insurance and finance, and beyond that, a pleasant person to talk to. Tuvi explained clearly and concisely what needed to be done, organized all my policies, some of which I didn\'t even know existed. Glad the treatment was reliable, dedicated, and professional.',
+            t2_av: 'M', t2_name: 'Michael Ben-David', t2_role: 'Retired from Ministry of Defense',
+            t3_text: 'My retirement date was approaching. I consulted several parties until I reached Tuvi. I had many dilemmas — how to retire? When? How to prepare? Tuvi laid out all the different options, offered exceptional solutions that I adopted entirely. He accompanied my entire retirement process professionally, was available throughout and afterwards. I recommend Tuvi to anyone approaching retirement.',
+            t3_av: 'M', t3_name: 'Meir Peretz', t3_role: 'Retired from Bank Leumi',
+            t4_text: 'Tuvi accompanied me and my wife throughout the entire retirement process. Thanks to his advice, we saved tens of thousands of shekels in taxes we didn\'t know we were entitled to relief on. A true professional who works solely for the client\'s benefit.',
+            t4_av: 'Y', t4_name: 'Yossi Cohen', t4_role: 'Retired from Rafael',
+            t5_text: 'I came to Tuvi on a warm recommendation from a friend. From the very first moment I felt complete confidence. He built me a structured retirement plan, handled all the paperwork with pension funds and insurance companies, and didn\'t stop until everything was perfect. Highly recommended.',
+            t5_av: 'R', t5_name: 'Ronit Levy', t5_role: 'Retired from Ministry of Education',
+            t6_text: 'When I retired from the IDF, I didn\'t know where to begin. Tuvi took the entire matter upon himself — mapped all my entitlements, planned my income structure optimally, and helped me avoid mistakes that would have cost me a fortune. Thank you from the bottom of my heart.',
+            t6_av: 'A', t6_name: 'Avi Dahan', t6_role: 'Senior Officer (Ret.), IDF',
             contact_title: 'I\'d Be Happy to Assist You',
             contact_subtitle: 'Want to learn more? Or ask a question? Leave your details and I\'ll get back to you soon',
             btn_send_now: 'Send Now',
@@ -1679,8 +1687,7 @@
             c_email: 'Email',
             c_whatsapp: 'WhatsApp',
             c_wa_val: 'Send a Message',
-            f_access: 'Accessibility Statement',
-            f_rights: 'All Rights Reserved',
+            f_rights: 'All Rights Reserved Tuvi Tzabari 2026 ©',
             mb_call: 'Call Me',
             mb_wa: 'WhatsApp',
             mb_email: 'Send Email',
@@ -1695,7 +1702,7 @@
             nav_calc: 'מחשבון פנסיוני',
             nav_testimonials: 'ממליצים',
             nav_contact: 'שמרו על קשר',
-            lang_toggle: 'English',
+            lang_toggle: 'EN',
             hero_label: 'מתכנן פיננסי מוסמך CFP',
             hero_title: 'הגעת <span>לגיל פרישה?</span>',
             hero_text1: 'פרישה היא ההחלטה הפיננסית הגדולה ביותר שתקבל בחייך.<br>הרכבת החלקים הנדרשים בתכנית פרישה דורשת מיומנות וניסיון.',
@@ -1705,7 +1712,7 @@
             about_title: 'אמינות. ניסיון. מקצועיות.',
             about_name: 'טובי צברי',
             about_role: 'מתכנן פיננסי',
-            about_creds: 'חבר באיגוד המתכננים הפיננסיים בישראל (UFPI) בעל הכשרת CFP\u00A0(Certified Financial Planner) מטעם המועצה הבינלאומית לתכנון פיננסי, ההסמכה המקצועית הגבוהה ביותר בתחום.',
+            about_creds: 'חבר באיגוד המתכננים הפיננסיים בישראל (UFPI)<br>בעל הכשרת CFP\u00A0(Certified Financial Planner) מטעם המועצה הבינלאומית לתכנון פיננסי, ההסמכה המקצועית הגבוהה ביותר בתחום.',
             about_bio: 'כמתכנן פיננסי ותיק, אני מסייע ללקוחותיי לתכנן את החיים הפיננסיים שלאחר הפרישה באופן אופטימלי עבורם ועבור משפחתם. מ־1990 ועד 2011 שימשתי כבעלים של סוכנות ביטוח מצליחה. החלטתי לשנות כיוון מתוך צורך שעלה מפניות של עשרות אנשים שביקשו ליווי וסיוע בתהליך הפרישה המורכב. אני מלא סיפוק ותחושת ערך בעמידה לצידם של לקוחותיי.',
             svc_title: 'כיצד אוכל לעזור לך?',
             svc_subtitle: 'בארבעה תחומים עיקריים',
@@ -1733,6 +1740,18 @@
             calc_disclaimer: '* החישוב הינו הערכה בלבד ואינו מהווה ייעוץ פיננסי. התוצאות בפועל עשויות להשתנות בהתאם לתנאי השוק, דמי ניהול, ומשתנים נוספים. לתכנון מדויק, צרו קשר לפגישת ייעוץ אישית.',
             quote: 'אנשים בגיל השלישי עבדו קשה, גידלו משפחות וצברו ניסיון חיים עשיר אך <strong>עתידם עוד לפניהם.</strong> מגיע להם לחיות ברווחה, עם מינימום דאגות. מגיע להם <strong>להמשיך ולהגשים חלומות.</strong>',
             test_title: 'לקוחות מספרים',
+            t1_text: 'לאחר יותר מ־20 שנים כשכיר הייתי זקוק למישהו שיעשה לי סדר בכל הביטוחים השונים ולהבין מה יש בתכנית הפנסיה ואיך להתמודד לקראת השלב הבא בחיי. טובי הגיח כמלאך שסייע לא רק להבין מה יש ומה מגיע לי, אלא גם ליווה אותי צעד אחר צעד. הידע, הניסיון, האמינות, המקצוענות של טובי נתנו לי להבין שיש פה איש מקצוע נדיר, איכותי ואמין.',
+            t1_av: 'ס', t1_name: 'סימון מתן', t1_role: 'מנהל בכיר פרש מחברת 888',
+            t2_text: 'חבר קרוב המליץ לי לגשת לטובי. מיד בפגישה הראשונה הבנתי שמולי נמצא איש מקצועי עם ניסיון בלתי רגיל בביטוח ופיננסים ומעבר לזה איש נעים וכיף לשוחח ולדבר. טובי הסביר בצורה עניינית ומאוד ברורה מה צריך לעשות, עשה לי סדר בכל הפוליסות שחלקן לא ידעתי על קיומן. שמח שהטיפול היה אמין, מסור ומקצועי. לא יודע מה הייתי עושה בלעדיו.',
+            t2_av: 'מ', t2_name: 'מיכאל בן-דוד', t2_role: 'פורש משהב"ט',
+            t3_text: 'מועד הפרישה שלי התקרב, התייעצתי עם מספר גורמים עד שהגעתי לטובי. היו לי המון התלבטויות, איך לפרוש? ומתי? בכלל, כיצד מתכוננים? טובי פרש בפניי את כל האפשרויות השונות, הציע לי פתרונות יוצאים מהכלל שאימצתי את כולם. ליווה את כל מהלך הפרישה שלי באופן מקצועי, היה זמין לאורך כל המהלך וגם אחרי. לכל מי שלפני פרישה ממליץ לגשת לטובי.',
+            t3_av: 'מ', t3_name: 'מאיר פרץ', t3_role: 'פורש בנק לאומי',
+            t4_text: 'טובי ליווה אותי ואת אשתי לאורך כל תהליך הפרישה. בזכות הייעוץ שלו חסכנו עשרות אלפי שקלים במיסים שלא ידענו שאנחנו זכאים להקלות בהם. מקצוען אמיתי שפועל אך ורק לטובת הלקוח.',
+            t4_av: 'י', t4_name: 'יוסי כהן', t4_role: 'פורש מרפאל',
+            t5_text: 'הגעתי לטובי בהמלצה חמה של חבר. מהרגע הראשון הרגשתי ביטחון מלא. הוא בנה לי תכנית פרישה מסודרת, טיפל בכל הניירת מול קרנות הפנסיה וחברות הביטוח, ולא הפסיק עד שהכל היה מושלם. ממליצה בחום.',
+            t5_av: 'ר', t5_name: 'רונית לוי', t5_role: 'פורשת ממשרד החינוך',
+            t6_text: 'כשפרשתי מצה"ל לא ידעתי מאיפה מתחילים. טובי לקח את כל הסיפור על עצמו — מיפה את כל הזכויות שלי, תכנן את מבנה ההכנסות באופן אופטימלי, ועזר לי להימנע מטעויות שהיו עולות לי הון. תודה מכל הלב.',
+            t6_av: 'א', t6_name: 'אבי דהן', t6_role: 'קצין בכיר בדימוס, צה"ל',
             contact_title: 'אשמח לעמוד לרשותך',
             contact_subtitle: 'רוצה לדעת מידע נוסף? או לשאול שאלה? השאירו פרטים ואחזור אליכם בהקדם',
             btn_send_now: 'שלחו עכשיו',
@@ -1740,8 +1759,7 @@
             c_email: 'אימייל',
             c_whatsapp: 'וואטסאפ',
             c_wa_val: 'שלחו הודעה',
-            f_access: 'הצהרת נגישות',
-            f_rights: 'כל הזכויות שמורות',
+            f_rights: 'כל הזכויות שמורות טובי צברי 2026 ©',
             mb_call: 'דבר איתי',
             mb_wa: 'וואטסאפ',
             mb_email: 'שלח מייל',
@@ -1782,13 +1800,6 @@
             if (val) el.placeholder = val;
         });
 
-        // Swap credentials border side
-        const creds = document.querySelector('.about-credentials');
-        if (creds) {
-            creds.style.borderRight = lang === 'he' ? '3px solid var(--gold)' : 'none';
-            creds.style.borderLeft = lang === 'en' ? '3px solid var(--gold)' : 'none';
-            creds.style.textAlign = lang === 'he' ? 'right' : 'left';
-        }
 
         // Fix form input direction
         document.querySelectorAll('.hero-form input, .contact-form input').forEach(el => {
@@ -1799,6 +1810,19 @@
     function toggleLang() {
         applyLang(currentLang === 'he' ? 'en' : 'he');
         closeNav();
+        // Re-trigger calculator to update translated strings
+        var slider = document.getElementById('ageSlider');
+        if (slider) slider.dispatchEvent(new Event('input'));
+
+        // Translate all carousel cards (including duplicates)
+        var track = document.getElementById('testimonialTrack');
+        if (track) {
+            track.querySelectorAll('[data-i18n]').forEach(function(el) {
+                var key = el.dataset.i18n;
+                var val = i18n[currentLang][key];
+                if (val) el.textContent = val;
+            });
+        }
     }
 
     // Apply saved language on load
@@ -1812,9 +1836,20 @@
         var wrapper = document.getElementById('testimonialWrapper');
         if (!track || !wrapper) return;
 
-        // Duplicate cards for seamless loop
-        var originalHTML = track.innerHTML;
-        track.innerHTML = originalHTML + originalHTML;
+        // Store original HTML for language rebuilds, then duplicate
+        track._originalHTML = track.innerHTML;
+        track.innerHTML = track._originalHTML + track._originalHTML;
+        track._remeasure = function() {
+            measure();
+            pos = 0;
+            // Keep trying until we get a valid width
+            if (setWidth <= 0) {
+                var retry = setInterval(function() {
+                    measure();
+                    if (setWidth > 0) clearInterval(retry);
+                }, 50);
+            }
+        };
 
         var GAP = 24;
         var SPEED = 0.5;
@@ -1875,6 +1910,7 @@
         });
         window.addEventListener('mousemove', function(e) {
             if (!dragging) return;
+            if (setWidth <= 0) measure();
             var dx = e.clientX - dragStartX;
             pos = dragStartPos + dx;
             wrapPos();
@@ -1894,6 +1930,7 @@
         }, { passive: true });
         wrapper.addEventListener('touchmove', function(e) {
             if (!dragging) return;
+            if (setWidth <= 0) measure();
             var dx = e.touches[0].clientX - dragStartX;
             pos = dragStartPos + dx;
             wrapPos();
