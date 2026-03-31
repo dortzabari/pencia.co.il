@@ -1,0 +1,1909 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>טובי צברי — ליווי בפרישה ותכנון פיננסי</title>
+    <meta name="description" content="טובי צברי - מתכנן פיננסי מוסמך CFP, ליווי בפרישה ותכנון פיננסי לגיל השלישי. ניסיון של עשרות שנים בתחום.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Suez+One&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --navy: #0a1628;
+            --navy-mid: #142240;
+            --navy-light: #1e3460;
+            --gold: #c9a55c;
+            --gold-light: #e4cc8e;
+            --gold-pale: #f5ecd7;
+            --cream: #faf8f4;
+            --warm-white: #fefdfb;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a5a;
+            --text-light: #7a7a8a;
+            --border-subtle: rgba(201, 165, 92, 0.15);
+            --shadow-sm: 0 1px 3px rgba(10, 22, 40, 0.04);
+            --shadow-md: 0 4px 20px rgba(10, 22, 40, 0.06);
+            --shadow-lg: 0 8px 40px rgba(10, 22, 40, 0.08);
+            --shadow-gold: 0 4px 24px rgba(201, 165, 92, 0.15);
+            --radius: 12px;
+            --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: 'Heebo', sans-serif;
+            color: var(--text-primary);
+            background: var(--warm-white);
+            line-height: 1.75;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ═══════════════════════════════════════
+           HEADER
+           ═══════════════════════════════════════ */
+        .header {
+            position: fixed;
+            top: 0; right: 0; left: 0;
+            z-index: 1000;
+            background: transparent;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            border-bottom: none;
+            transition: var(--transition);
+        }
+        .header.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.2); }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .logo-group { display: flex; align-items: center; gap: 1.2rem; text-decoration: none; }
+        .logo {
+            font-family: 'Suez One', serif;
+            font-size: 1.45rem;
+            color: var(--gold);
+            letter-spacing: -0.01em;
+        }
+        .logo-tagline {
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.4);
+            font-weight: 300;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-links a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 400;
+            transition: var(--transition);
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; right: 0;
+            width: 0; height: 1px;
+            background: var(--gold);
+            transition: var(--transition);
+        }
+        .nav-links a:hover { color: var(--gold-light); }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links .nav-en {
+            font-size: 0.78rem;
+            padding: 0.3rem 1rem;
+            border: 1px solid rgba(201,165,92,0.25);
+            border-radius: 100px;
+            color: var(--gold);
+        }
+        .nav-links .nav-en:hover { background: rgba(201,165,92,0.08); }
+        .nav-links .nav-en::after { display: none; }
+
+        .burger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            background: none;
+            border: none;
+        }
+        .burger span {
+            width: 22px; height: 1.5px;
+            background: var(--gold);
+            transition: var(--transition);
+            display: block;
+        }
+        .burger.active span:nth-child(1) { transform: rotate(45deg) translate(4px,5px); }
+        .burger.active span:nth-child(2) { opacity: 0; }
+        .burger.active span:nth-child(3) { transform: rotate(-45deg) translate(4px,-5px); }
+
+        /* ═══════════════════════════════════════
+           HERO — CINEMATIC ANIMATED
+           ═══════════════════════════════════════ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--navy);
+        }
+
+        /* Video background */
+        .hero-video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: blur(3px);
+            transform: scale(1.05);
+            z-index: 0;
+        }
+
+        /* Dark overlay for text readability */
+        .hero-video-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(10, 22, 40, 0.6);
+            z-index: 1;
+        }
+
+
+        /* Bottom fade to cream */
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 180px;
+            background: linear-gradient(to top, var(--warm-white), transparent);
+            z-index: 2;
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 10rem 2rem 8rem;
+            text-align: center;
+        }
+
+        .hero-content { max-width: 100%; }
+
+        .hero-label {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.5);
+            font-weight: 400;
+            animation: fadeInUp 0.8s 0.6s ease both;
+        }
+        .hero-label-logo { height: 48px; width: auto; }
+
+        .hero h1 {
+            font-family: 'Suez One', serif;
+            font-size: clamp(2.6rem, 5vw, 3.8rem);
+            font-weight: 400;
+            color: #fff;
+            line-height: 1.25;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s 0.15s ease both;
+        }
+        .hero h1 span { color: var(--gold); }
+
+        .hero-text {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.85;
+            margin-bottom: 1rem;
+            font-weight: 300;
+            animation: fadeInUp 0.8s 0.25s ease both;
+        }
+        .hero-text.secondary {
+            font-size: 0.93rem;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 2.5rem;
+            animation-delay: 0.35s;
+        }
+
+        .hero-form-wrapper { animation: fadeInUp 0.8s 0.45s ease both; }
+        .hero-form { display: flex; gap: 0.6rem; margin-bottom: 1.2rem; max-width: 520px; margin-left: auto; margin-right: auto; }
+        .hero-form input {
+            flex: 1;
+            padding: 0.9rem 1.2rem;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            color: #fff;
+            font-family: inherit;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            direction: rtl;
+        }
+        .hero-form input::placeholder { color: rgba(255,255,255,0.25); }
+        .hero-form input:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: rgba(201,165,92,0.04);
+            box-shadow: 0 0 0 3px rgba(201,165,92,0.08);
+        }
+        .hero-form button {
+            padding: 0.9rem 2.2rem;
+            background: var(--gold);
+            color: var(--navy);
+            border: none;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        .hero-form button:hover {
+            background: var(--gold-light);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .hero-phone {
+            color: rgba(255,255,255,0.35);
+            font-size: 0.88rem;
+            animation: fadeInUp 0.8s 0.55s ease both;
+        }
+        .hero-phone a {
+            color: var(--gold-light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .hero-phone a:hover { color: #fff; }
+
+
+        /* ═══════════════════════════════════════
+           COMMON SECTION STYLES
+           ═══════════════════════════════════════ */
+        .section { padding: 6rem 2rem; }
+        .section-inner { max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-title {
+            font-family: 'Suez One', serif;
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            font-weight: 400;
+            color: var(--text-primary);
+            margin-bottom: 0.8rem;
+            line-height: 1.35;
+        }
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--text-light);
+            font-weight: 300;
+        }
+        .gold-line {
+            width: 40px; height: 2px;
+            background: var(--gold);
+            margin: 1.2rem auto 0;
+        }
+
+        /* ═══════════════════════════════════════
+           ABOUT
+           ═══════════════════════════════════════ */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 100vh;
+            padding: 0 !important;
+            background: var(--navy);
+            overflow: hidden;
+        }
+
+        .about-image-half {
+            position: relative;
+            overflow: hidden;
+        }
+        .about-image-half img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .about-text-half {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem 3rem;
+            background: var(--navy);
+        }
+
+        .about .section-header { text-align: right; margin-bottom: 2rem; }
+        .about .section-title { color: #fff; }
+
+        .about-content {
+            max-width: 500px;
+            text-align: right;
+            margin-right: 0;
+            margin-left: auto;
+        }
+
+        .about-name {
+            font-family: 'Suez One', serif;
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 0.3rem;
+        }
+        .about-role {
+            font-size: 1rem;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-credentials {
+            font-size: 0.92rem;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.85;
+            margin-bottom: 1.5rem;
+            padding: 1.2rem 1.5rem;
+            background: rgba(255,255,255,0.06);
+            border-radius: var(--radius);
+            border-right: 3px solid var(--gold);
+            text-align: right;
+        }
+
+        .cert-logos {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .cert-logo-img {
+            height: 50px;
+            width: auto;
+            opacity: 0.85;
+            transition: var(--transition);
+            filter: brightness(1.2);
+        }
+        .cert-logo-img:hover { opacity: 1; }
+
+        .about-bio {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.9;
+        }
+
+        /* ═══════════════════════════════════════
+           SERVICES
+           ═══════════════════════════════════════ */
+        .services { background: var(--cream); }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: var(--warm-white);
+            border-radius: var(--radius);
+            padding: 2.2rem 1.8rem;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--border-subtle);
+        }
+        .service-card:hover::before { transform: scaleX(1); }
+
+        .service-icon {
+            width: 52px; height: 52px;
+            margin: 0 auto 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+            border-radius: 14px;
+            color: var(--gold);
+            transition: var(--transition);
+        }
+        .service-icon svg { width: 24px; height: 24px; }
+        .service-card:hover .service-icon { transform: scale(1.05); box-shadow: var(--shadow-gold); }
+
+        .service-title {
+            font-family: 'Suez One', serif;
+            font-size: 1.12rem;
+            color: var(--text-primary);
+            margin-bottom: 0.8rem;
+        }
+        .service-desc {
+            font-size: 0.86rem;
+            color: var(--text-secondary);
+            line-height: 1.85;
+        }
+        .service-desc strong { color: var(--text-primary); font-weight: 600; }
+
+        .services-cta { text-align: center; margin-top: 3rem; }
+
+        .btn-outline {
+            display: inline-block;
+            padding: 0.8rem 2.5rem;
+            border: 1.5px solid var(--gold);
+            border-radius: 100px;
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            background: transparent;
+        }
+        .btn-outline:hover {
+            background: var(--gold);
+            color: var(--navy);
+            box-shadow: var(--shadow-gold);
+        }
+
+        /* ═══════════════════════════════════════
+           PENSION CALCULATOR
+           ═══════════════════════════════════════ */
+        .calculator {
+            background: var(--navy);
+            position: relative;
+            overflow: hidden;
+        }
+        .calculator::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 30% 50%, rgba(201,165,92,0.04), transparent 60%);
+        }
+
+        .calculator .section-title { color: #fff; }
+        .calculator .section-subtitle { color: rgba(255,255,255,0.5); }
+        .calculator .gold-line { margin-bottom: 0; }
+
+        .calc-container {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .calc-inputs {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: var(--radius);
+            padding: 2.5rem;
+        }
+
+        .calc-field {
+            margin-bottom: 1.8rem;
+        }
+        .calc-field:last-child { margin-bottom: 0; }
+
+        .calc-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.6rem;
+        }
+        .calc-label span {
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.7);
+            font-weight: 500;
+        }
+        .calc-value {
+            font-size: 0.95rem;
+            color: var(--gold);
+            font-weight: 700;
+            font-family: 'Heebo', sans-serif;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .calc-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 4px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            outline: none;
+            transition: var(--transition);
+        }
+        .calc-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--gold);
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(201,165,92,0.3);
+            transition: var(--transition);
+        }
+        .calc-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
+            box-shadow: 0 2px 12px rgba(201,165,92,0.5);
+        }
+        .calc-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--gold);
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 8px rgba(201,165,92,0.3);
+        }
+
+        .calc-results {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            text-align: center;
+        }
+
+        .calc-result-main {
+            margin-bottom: 2rem;
+        }
+
+        .calc-result-label {
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 0.5rem;
+        }
+
+        .calc-result-number {
+            font-family: 'Suez One', serif;
+            font-size: clamp(2.2rem, 4vw, 3rem);
+            color: var(--gold);
+            direction: ltr;
+            text-align: center;
+        }
+
+        .calc-result-number .currency {
+            font-size: 0.5em;
+            color: var(--gold-light);
+            vertical-align: super;
+        }
+
+        .calc-result-sub {
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.35);
+            margin-top: 0.3rem;
+        }
+
+        .calc-chart {
+            height: 200px;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+
+        .calc-chart canvas {
+            width: 100%;
+            height: 100%;
+        }
+
+        .calc-breakdown {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .calc-stat {
+            padding: 1rem;
+            background: rgba(255,255,255,0.04);
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .calc-stat-label {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 0.3rem;
+        }
+        .calc-stat-value {
+            font-size: 1.1rem;
+            color: #fff;
+            font-weight: 700;
+            direction: ltr;
+            text-align: center;
+        }
+
+        .calc-cta {
+            margin-top: 2rem;
+        }
+
+        .btn-gold {
+            display: inline-block;
+            padding: 0.9rem 2.5rem;
+            background: var(--gold);
+            color: var(--navy);
+            border: none;
+            border-radius: 100px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .btn-gold:hover {
+            background: var(--gold-light);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .calc-disclaimer {
+            font-size: 0.72rem;
+            color: rgba(255,255,255,0.25);
+            margin-top: 1rem;
+            line-height: 1.6;
+        }
+
+        /* ═══════════════════════════════════════
+           QUOTE
+           ═══════════════════════════════════════ */
+        .quote-section {
+            background: var(--cream);
+            padding: 5rem 2rem;
+            position: relative;
+        }
+        .quote-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .quote-mark {
+            font-family: 'Suez One', serif;
+            font-size: 5rem;
+            color: var(--gold);
+            opacity: 0.25;
+            line-height: 1;
+            margin-bottom: -1.2rem;
+        }
+        .quote-text {
+            font-family: 'Suez One', serif;
+            font-size: clamp(1.1rem, 2vw, 1.35rem);
+            color: var(--text-primary);
+            line-height: 2;
+        }
+        .quote-text strong { color: var(--gold); }
+        .quote-mark-end {
+            font-family: 'Suez One', serif;
+            font-size: 5rem;
+            color: var(--gold);
+            opacity: 0.25;
+            line-height: 1;
+            margin-top: -0.8rem;
+        }
+
+        /* ═══════════════════════════════════════
+           TESTIMONIALS
+           ═══════════════════════════════════════ */
+        .testimonials { background: var(--warm-white); }
+
+        .testimonials-track-wrapper {
+            overflow: hidden;
+            position: relative;
+            cursor: grab;
+            -webkit-mask-image: linear-gradient(to left, transparent 0%, black 8%, black 92%, transparent 100%);
+            mask-image: linear-gradient(to left, transparent 0%, black 8%, black 92%, transparent 100%);
+        }
+        .testimonials-track-wrapper:active { cursor: grabbing; }
+
+        .testimonials-track {
+            display: flex;
+            gap: 1.5rem;
+            width: max-content;
+            will-change: transform;
+        }
+
+        .testimonial-card {
+            background: var(--cream);
+            border-radius: var(--radius);
+            padding: 2rem 1.8rem;
+            transition: var(--transition);
+            border: 1px solid var(--border-subtle);
+            width: 380px;
+            flex-shrink: 0;
+            box-shadow: var(--shadow-sm);
+        }
+        .testimonial-card:hover {
+            border-color: var(--border-subtle);
+            box-shadow: var(--shadow-md);
+        }
+
+        .testimonial-quote-icon { color: var(--gold); opacity: 0.3; margin-bottom: 1rem; }
+        .testimonial-quote-icon svg { width: 28px; height: 28px; }
+
+        .testimonial-text {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-subtle);
+        }
+        .author-avatar {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-family: 'Suez One', serif;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+        .author-name { font-weight: 700; font-size: 0.88rem; color: var(--text-primary); }
+        .author-title { font-size: 0.78rem; color: var(--text-light); }
+
+        /* ═══════════════════════════════════════
+           CONTACT
+           ═══════════════════════════════════════ */
+        .contact { background: var(--cream); }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .contact-form-card {
+            background: var(--warm-white);
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-md);
+        }
+        .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+        .contact-form input {
+            padding: 1rem 1.2rem;
+            background: var(--cream);
+            border: 1px solid var(--border-subtle);
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            transition: var(--transition);
+            direction: rtl;
+        }
+        .contact-form input::placeholder { color: var(--text-light); }
+        .contact-form input:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: var(--warm-white);
+            box-shadow: 0 0 0 3px rgba(201,165,92,0.08);
+        }
+        .btn-submit {
+            padding: 1rem;
+            background: var(--gold);
+            color: var(--navy);
+            border: none;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .btn-submit:hover {
+            background: var(--gold-light);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .contact-info-card { display: flex; flex-direction: column; gap: 1.2rem; }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.2rem 1.5rem;
+            background: var(--warm-white);
+            border-radius: var(--radius);
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+        .contact-info-item:hover {
+            border-color: var(--border-subtle);
+            box-shadow: var(--shadow-sm);
+            transform: translateX(-4px);
+        }
+
+        .contact-icon {
+            width: 44px; height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .contact-icon svg { width: 20px; height: 20px; }
+        .contact-icon.phone { background: rgba(201,165,92,0.1); color: var(--gold); }
+        .contact-icon.email { background: rgba(30,52,96,0.08); color: var(--navy-light); }
+        .contact-icon.whatsapp { background: rgba(37,211,102,0.08); color: #25d366; }
+
+        .contact-info-label { font-size: 0.78rem; color: var(--text-light); margin-bottom: 0.15rem; }
+        .contact-info-value { font-size: 1rem; font-weight: 600; color: var(--text-primary); }
+
+        /* ═══════════════════════════════════════
+           FOOTER
+           ═══════════════════════════════════════ */
+        .footer {
+            background: var(--navy);
+            padding: 2rem;
+        }
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-logo {
+            font-family: 'Suez One', serif;
+            font-size: 1.1rem;
+            color: var(--gold);
+        }
+        .footer-links { display: flex; gap: 2rem; list-style: none; }
+        .footer-links a {
+            color: rgba(255,255,255,0.4);
+            text-decoration: none;
+            font-size: 0.82rem;
+            transition: var(--transition);
+        }
+        .footer-links a:hover { color: var(--gold-light); }
+
+        /* ═══════════════════════════════════════
+           WHATSAPP FLOAT
+           ═══════════════════════════════════════ */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem; left: 2rem;
+            z-index: 999;
+            width: 56px; height: 56px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+            transition: var(--transition);
+            animation: fadeIn 1s 1s ease both;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.08);
+            box-shadow: 0 6px 30px rgba(37,211,102,0.45);
+        }
+        .whatsapp-float svg { width: 28px; height: 28px; }
+
+        /* ═══════════════════════════════════════
+           MOBILE BOTTOM BAR
+           ═══════════════════════════════════════ */
+        .mobile-bar {
+            display: none;
+            position: fixed;
+            bottom: 0; right: 0; left: 0;
+            z-index: 998;
+            background: var(--navy);
+            border-top: 1px solid rgba(201,165,92,0.15);
+            padding: 0.6rem 0;
+        }
+        .mobile-bar-inner { display: flex; justify-content: space-around; align-items: center; }
+        .mobile-bar a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+            text-decoration: none;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.68rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        .mobile-bar a:hover { color: var(--gold); }
+        .mobile-bar svg { width: 22px; height: 22px; }
+
+        /* ═══════════════════════════════════════
+           MOBILE NAV OVERLAY
+           ═══════════════════════════════════════ */
+        .nav-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            background: rgba(10,22,40,0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+        .nav-overlay.active { display: flex; }
+        .nav-overlay a {
+            font-family: 'Suez One', serif;
+            font-size: 1.4rem;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .nav-overlay a:hover { color: var(--gold); }
+        .nav-close {
+            position: absolute;
+            top: 1.5rem; left: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--gold);
+            cursor: pointer;
+            padding: 8px;
+        }
+        .nav-close svg { width: 28px; height: 28px; }
+
+        /* ═══════════════════════════════════════
+           ANIMATIONS
+           ═══════════════════════════════════════ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* ═══════════════════════════════════════
+           RESPONSIVE
+           ═══════════════════════════════════════ */
+        @media (max-width: 1024px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero-form { max-width: 500px; margin: 0 auto 1.2rem; }
+            .calc-container { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .burger { display: flex; }
+            .logo-tagline { display: none; }
+            .header-inner { height: 60px; }
+            .section { padding: 4rem 1.5rem; }
+            .services-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .testimonial-card { width: 300px; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .hero { min-height: auto; }
+            .hero-inner { padding: 7rem 1.5rem 5rem; }
+            .hero h1 { font-size: 2rem; }
+            .hero-form { flex-direction: column; }
+            .mobile-bar { display: block; }
+            .whatsapp-float { bottom: 5.5rem; }
+            .footer-inner { flex-direction: column; gap: 1rem; }
+            .about { grid-template-columns: 1fr; min-height: auto; }
+            .about-image-half { height: 50vh; }
+            .about-text-half { padding: 3rem 1.5rem; }
+            .about-credentials { text-align: right; }
+            .calc-breakdown { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══ HEADER ═══ -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <div class="logo-group">
+                <span class="logo" data-i18n="logo">טובי צברי</span>
+                <span class="logo-tagline" data-i18n="tagline">ליווי בפרישה ותכנון פיננסי לגיל השלישי</span>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#about" data-i18n="nav_about">קצת עלי</a></li>
+                    <li><a href="#services" data-i18n="nav_services">כיצד אוכל לעזור</a></li>
+                    <li><a href="#calculator" data-i18n="nav_calc">מחשבון פנסיוני</a></li>
+                    <li><a href="#Testimonials" data-i18n="nav_testimonials">ממליצים</a></li>
+                    <li><a href="#Contact" data-i18n="nav_contact">שמרו על קשר</a></li>
+                    <li><a href="javascript:void(0)" class="nav-en" id="langToggle" onclick="toggleLang()">English</a></li>
+                </ul>
+            </nav>
+            <button class="burger" id="burger" aria-label="תפריט">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ═══ MOBILE NAV ═══ -->
+    <div class="nav-overlay" id="navOverlay">
+        <button class="nav-close" id="navClose" aria-label="סגור תפריט">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <a href="#about" class="nav-mobile-link" data-i18n="nav_about">קצת עלי</a>
+        <a href="#services" class="nav-mobile-link" data-i18n="nav_services">כיצד אוכל לעזור</a>
+        <a href="#calculator" class="nav-mobile-link" data-i18n="nav_calc">מחשבון פנסיוני</a>
+        <a href="#Testimonials" class="nav-mobile-link" data-i18n="nav_testimonials">ממליצים</a>
+        <a href="#Contact" class="nav-mobile-link" data-i18n="nav_contact">שמרו על קשר</a>
+        <a href="javascript:void(0)" class="nav-mobile-link" onclick="toggleLang()" data-i18n="lang_toggle">English</a>
+    </div>
+
+    <!-- ═══ HERO ═══ -->
+    <section class="hero">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="hero-bg.mp4" type="video/mp4">
+        </video>
+        <div class="hero-video-overlay"></div>
+        <div class="hero-inner">
+            <div class="hero-content">
+                <h1 data-i18n="hero_title" data-i18n-html="1">הגעת <span>לגיל פרישה?</span></h1>
+                <p class="hero-text" data-i18n="hero_text1" data-i18n-html="1">פרישה היא ההחלטה הפיננסית הגדולה ביותר שתקבל בחייך.<br>הרכבת החלקים הנדרשים בתכנית פרישה דורשת מיומנות וניסיון.</p>
+                <p class="hero-text secondary" data-i18n="hero_text2" data-i18n-html="1">ליווי אובייקטיבי יסייע לך לקבל את ההחלטות הנכונות עבורך ולממש שאיפות.<br>אשמח לסייע לך בכל התהליך מול כל הגורמים הרלוונטיים ולהעניק לך מעטפת מלאה שתייצר עבורך ערך כלכלי משמעותי.</p>
+                <div class="hero-form-wrapper">
+                    <form class="hero-form" onsubmit="return false;">
+                        <input type="text" placeholder="שם" data-i18n-ph="ph_name" required>
+                        <input type="email" placeholder="אימייל" data-i18n-ph="ph_email" required>
+                        <button type="submit" data-i18n="btn_send">שלחו</button>
+                    </form>
+                    <p class="hero-phone" data-i18n="hero_phone" data-i18n-html="1">אם מעדיפים לשוחח, דברו איתי ב <a href="tel:0505209930">050-5209930</a></p>
+                </div>
+                <div class="hero-label">
+                    <img src="CFP-Logo.png" alt="CFP" class="hero-label-logo">
+                    <span data-i18n="hero_label">מתכנן פיננסי מוסמך CFP</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ ABOUT ═══ -->
+    <section class="about" id="about">
+        <div class="about-text-half">
+            <div class="section-header reveal">
+                <h2 class="section-title" data-i18n="about_title">אמינות. ניסיון. מקצועיות.</h2>
+                <div class="gold-line"></div>
+            </div>
+            <div class="about-content reveal">
+                <h3 class="about-name" data-i18n="about_name">טובי צברי</h3>
+                <p class="about-role" data-i18n="about_role">מתכנן פיננסי</p>
+                <div class="about-credentials" data-i18n="about_creds">
+                    חבר באיגוד המתכננים הפיננסיים בישראל (UFPI) בעל הכשרת CFP&nbsp;(Certified Financial Planner) מטעם המועצה הבינלאומית לתכנון פיננסי, ההסמכה המקצועית הגבוהה ביותר בתחום.
+                </div>
+                <div class="cert-logos">
+                    <img src="https://fpai.co.il/wp-content/uploads/2020/03/CFP-FCL-N-300x210.png" alt="CFP Logo" class="cert-logo-img" onerror="this.outerHTML='<span style=\'padding:0.5rem 1.2rem;border:1px solid rgba(201,165,92,0.15);border-radius:8px;font-size:0.82rem;font-weight:600;color:#142240\'>CFP</span>'">
+                    <img src="https://fpai.co.il/wp-content/uploads/2020/05/logo-לשכה-FPAI-small.png" alt="FPAI Logo" class="cert-logo-img" onerror="this.outerHTML='<span style=\'padding:0.5rem 1.2rem;border:1px solid rgba(201,165,92,0.15);border-radius:8px;font-size:0.82rem;font-weight:600;color:#142240\'>UFPI</span>'">
+                </div>
+                <p class="about-bio" data-i18n="about_bio">
+                    כמתכנן פיננסי ותיק, אני מסייע ללקוחותיי לתכנן את החיים הפיננסיים שלאחר הפרישה באופן אופטימלי עבורם ועבור משפחתם.
+                    מ־1990 ועד 2011 שימשתי כבעלים של סוכנות ביטוח מצליחה. החלטתי לשנות כיוון מתוך צורך שעלה מפניות של עשרות אנשים שביקשו ליווי וסיוע בתהליך הפרישה המורכב. אני מלא סיפוק ותחושת ערך בעמידה לצידם של לקוחותיי.
+                </p>
+            </div>
+        </div>
+        <div class="about-image-half">
+            <img src="images/for use.JPG" alt="טובי צברי">
+        </div>
+    </section>
+
+    <!-- ═══ SERVICES ═══ -->
+    <section class="section services" id="services">
+        <div class="section-inner">
+            <div class="section-header reveal">
+                <h2 class="section-title" data-i18n="svc_title">כיצד אוכל לעזור לך?</h2>
+                <p class="section-subtitle" data-i18n="svc_subtitle">בארבעה תחומים עיקריים</p>
+                <div class="gold-line"></div>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+                    </div>
+                    <h3 class="service-title" data-i18n="svc1_title">תכנון פרישה</h3>
+                    <p class="service-desc" data-i18n="svc1_desc" data-i18n-html="1">מיפוי המוצרים הפנסיוניים המתאימים עבורך ועבור בן/בת הזוג שלך. <strong>התאמה של תכניות פרישה בהתאמה מדויקת לצרכים שלך.</strong> יישום התכניות בפועל – הגשת טפסים, מעקב ובקרה שוטפת.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
+                    </div>
+                    <h3 class="service-title" data-i18n="svc2_title">מיסוי פרישה</h3>
+                    <p class="service-desc" data-i18n="svc2_desc" data-i18n-html="1">מרבית הפורשים אינם מודעים להטבות המס להם הם זכאים. אני אמפה עבורך את כל סל ההטבות שמגיע לך, <strong>על מנת להוזיל את המיסוי על הפנסיה ולעיתים אף לבטלו.</strong></p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+                    </div>
+                    <h3 class="service-title" data-i18n="svc3_title">ניהול סיכונים</h3>
+                    <p class="service-desc" data-i18n="svc3_desc" data-i18n-html="1">רוצה לעזור לילדים לקנות דירה, לנסוע לחו"ל פעם בשנה, וגם לחסוך לדיור מוגן? ניהול מסגרת פיננסית תסייע לך לתכנן את ההוצאות שלך לטווח הקצר והארוך כאחד, <strong>ולהימנע מטעויות קריטיות.</strong></p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                    </div>
+                    <h3 class="service-title" data-i18n="svc4_title">השקעות בהתאמה אישית</h3>
+                    <p class="service-desc" data-i18n="svc4_desc" data-i18n-html="1"><strong>מענה מקצועי</strong> לפורשים בעלי אמצעים, שרוצים להשקיע את כספם בחכמה. תכנון ההשקעה מתבצע בהתאם לטווח ההשקעה הרצוי, אישיותו של המשקיע ושלל מרכיבים נוספים.</p>
+                </div>
+            </div>
+            <div class="services-cta reveal">
+                <a href="#Contact" class="btn-outline" data-i18n="btn_details">לפרטים נוספים</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ PENSION CALCULATOR ═══ -->
+    <section class="section calculator" id="calculator">
+        <div class="section-inner">
+            <div class="section-header reveal">
+                <h2 class="section-title" data-i18n="calc_title">מחשבון פנסיוני</h2>
+                <p class="section-subtitle" data-i18n="calc_subtitle">גלו כמה תקבלו בפנסיה — וכיצד תכנון נכון יכול לשנות את התמונה</p>
+                <div class="gold-line"></div>
+            </div>
+            <div class="calc-container">
+                <div class="calc-inputs reveal">
+                    <div class="calc-field">
+                        <div class="calc-label">
+                            <span data-i18n="calc_age">גיל נוכחי</span>
+                            <span class="calc-value" id="ageValue">50</span>
+                        </div>
+                        <input type="range" class="calc-slider" id="ageSlider" min="25" max="70" value="50">
+                    </div>
+                    <div class="calc-field">
+                        <div class="calc-label">
+                            <span data-i18n="calc_retire">גיל פרישה</span>
+                            <span class="calc-value" id="retireValue">67</span>
+                        </div>
+                        <input type="range" class="calc-slider" id="retireSlider" min="55" max="75" value="67">
+                    </div>
+                    <div class="calc-field">
+                        <div class="calc-label">
+                            <span data-i18n="calc_salary">שכר חודשי ברוטו</span>
+                            <span class="calc-value" id="salaryValue">₪20,000</span>
+                        </div>
+                        <input type="range" class="calc-slider" id="salarySlider" min="5000" max="80000" value="20000" step="1000">
+                    </div>
+                    <div class="calc-field">
+                        <div class="calc-label">
+                            <span data-i18n="calc_savings">חיסכון פנסיוני קיים</span>
+                            <span class="calc-value" id="savingsValue">₪500,000</span>
+                        </div>
+                        <input type="range" class="calc-slider" id="savingsSlider" min="0" max="5000000" value="500000" step="10000">
+                    </div>
+                    <div class="calc-field">
+                        <div class="calc-label">
+                            <span data-i18n="calc_contrib">הפקדה חודשית (עובד + מעסיק)</span>
+                            <span class="calc-value" id="contribValue">₪3,700</span>
+                        </div>
+                        <input type="range" class="calc-slider" id="contribSlider" min="500" max="15000" value="3700" step="100">
+                    </div>
+                    <div class="calc-field">
+                        <div class="calc-label">
+                            <span data-i18n="calc_return">תשואה שנתית צפויה</span>
+                            <span class="calc-value" id="returnValue">4.0%</span>
+                        </div>
+                        <input type="range" class="calc-slider" id="returnSlider" min="1" max="10" value="4" step="0.5">
+                    </div>
+                </div>
+                <div class="calc-results reveal">
+                    <div class="calc-result-main">
+                        <div class="calc-result-label" data-i18n="calc_result_label">הקצבה החודשית הצפויה שלך</div>
+                        <div class="calc-result-number" id="monthlyPension"><span class="currency">₪</span>8,450</div>
+                        <div class="calc-result-sub" id="replacementRate">שיעור החלפה: 42% מהשכר</div>
+                    </div>
+                    <div class="calc-chart">
+                        <canvas id="pensionChart"></canvas>
+                    </div>
+                    <div class="calc-breakdown">
+                        <div class="calc-stat">
+                            <div class="calc-stat-label" data-i18n="calc_total_label">סה"כ חיסכון בפרישה</div>
+                            <div class="calc-stat-value" id="totalSavings">₪1,690,000</div>
+                        </div>
+                        <div class="calc-stat">
+                            <div class="calc-stat-label" data-i18n="calc_years_label">שנות חיסכון נותרות</div>
+                            <div class="calc-stat-value" id="yearsLeft">17</div>
+                        </div>
+                    </div>
+                    <div class="calc-cta">
+                        <a href="#Contact" class="btn-gold" data-i18n="calc_cta">רוצה לדעת כיצד לשפר את התוצאה?</a>
+                    </div>
+                    <p class="calc-disclaimer" data-i18n="calc_disclaimer">* החישוב הינו הערכה בלבד ואינו מהווה ייעוץ פיננסי. התוצאות בפועל עשויות להשתנות בהתאם לתנאי השוק, דמי ניהול, ומשתנים נוספים. לתכנון מדויק, צרו קשר לפגישת ייעוץ אישית.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ QUOTE ═══ -->
+    <section class="quote-section">
+        <div class="quote-inner reveal">
+            <div class="quote-mark">"</div>
+            <p class="quote-text" data-i18n="quote" data-i18n-html="1">אנשים בגיל השלישי עבדו קשה, גידלו משפחות וצברו ניסיון חיים עשיר אך <strong>עתידם עוד לפניהם.</strong> מגיע להם לחיות ברווחה, עם מינימום דאגות. מגיע להם <strong>להמשיך ולהגשים חלומות.</strong></p>
+            <div class="quote-mark-end">"</div>
+        </div>
+    </section>
+
+    <!-- ═══ TESTIMONIALS ═══ -->
+    <section class="section testimonials" id="Testimonials">
+        <div class="section-inner">
+            <div class="section-header reveal">
+                <h2 class="section-title" data-i18n="test_title">לקוחות מספרים</h2>
+                <div class="gold-line"></div>
+            </div>
+            <div class="testimonials-track-wrapper" id="testimonialWrapper">
+              <div class="testimonials-track" id="testimonialTrack">
+                <div class="testimonial-card">
+                    <div class="testimonial-quote-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg></div>
+                    <p class="testimonial-text">לאחר יותר מ־20 שנים כשכיר הייתי זקוק למישהו שיעשה לי סדר בכל הביטוחים השונים ולהבין מה יש בתכנית הפנסיה ואיך להתמודד לקראת השלב הבא בחיי. טובי הגיח כמלאך שסייע לא רק להבין מה יש ומה מגיע לי, אלא גם ליווה אותי צעד אחר צעד. הידע, הניסיון, האמינות, המקצוענות של טובי נתנו לי להבין שיש פה איש מקצוע נדיר, איכותי ואמין.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ס</div>
+                        <div class="author-info">
+                            <span class="author-name">סימון מתן</span>
+                            <span class="author-title">מנהל בכיר פרש מחברת 888</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg></div>
+                    <p class="testimonial-text">חבר קרוב המליץ לי לגשת לטובי. מיד בפגישה הראשונה הבנתי שמולי נמצא איש מקצועי עם ניסיון בלתי רגיל בביטוח ופיננסים ומעבר לזה איש נעים וכיף לשוחח ולדבר. טובי הסביר בצורה עניינית ומאוד ברורה מה צריך לעשות, עשה לי סדר בכל הפוליסות שחלקן לא ידעתי על קיומן. שמח שהטיפול היה אמין, מסור ומקצועי. לא יודע מה הייתי עושה בלעדיו.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">מ</div>
+                        <div class="author-info">
+                            <span class="author-name">מיכאל בן-דוד</span>
+                            <span class="author-title">פורש משהב"ט</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg></div>
+                    <p class="testimonial-text">מועד הפרישה שלי התקרב, התייעצתי עם מספר גורמים עד שהגעתי לטובי. היו לי המון התלבטויות, איך לפרוש? ומתי? בכלל, כיצד מתכוננים? טובי פרש בפניי את כל האפשרויות השונות, הציע לי פתרונות יוצאים מהכלל שאימצתי את כולם. ליווה את כל מהלך הפרישה שלי באופן מקצועי, היה זמין לאורך כל המהלך וגם אחרי. לכל מי שלפני פרישה ממליץ לגשת לטובי.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">מ</div>
+                        <div class="author-info">
+                            <span class="author-name">מאיר פרץ</span>
+                            <span class="author-title">פורש בנק לאומי</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg></div>
+                    <p class="testimonial-text">טובי ליווה אותי ואת אשתי לאורך כל תהליך הפרישה. בזכות הייעוץ שלו חסכנו עשרות אלפי שקלים במיסים שלא ידענו שאנחנו זכאים להקלות בהם. מקצוען אמיתי שפועל אך ורק לטובת הלקוח.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">י</div>
+                        <div class="author-info">
+                            <span class="author-name">יוסי כהן</span>
+                            <span class="author-title">פורש מרפאל</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg></div>
+                    <p class="testimonial-text">הגעתי לטובי בהמלצה חמה של חבר. מהרגע הראשון הרגשתי ביטחון מלא. הוא בנה לי תכנית פרישה מסודרת, טיפל בכל הניירת מול קרנות הפנסיה וחברות הביטוח, ולא הפסיק עד שהכל היה מושלם. ממליצה בחום.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ר</div>
+                        <div class="author-info">
+                            <span class="author-name">רונית לוי</span>
+                            <span class="author-title">פורשת ממשרד החינוך</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg></div>
+                    <p class="testimonial-text">כשפרשתי מצה"ל לא ידעתי מאיפה מתחילים. טובי לקח את כל הסיפור על עצמו — מיפה את כל הזכויות שלי, תכנן את מבנה ההכנסות באופן אופטימלי, ועזר לי להימנע מטעויות שהיו עולות לי הון. תודה מכל הלב.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">א</div>
+                        <div class="author-info">
+                            <span class="author-name">אבי דהן</span>
+                            <span class="author-title">קצין בכיר בדימוס, צה"ל</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Duplicates for seamless loop are inserted by JS -->
+              </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ CONTACT ═══ -->
+    <section class="section contact" id="Contact">
+        <div class="section-inner">
+            <div class="section-header reveal">
+                <h2 class="section-title" data-i18n="contact_title">אשמח לעמוד לרשותך</h2>
+                <p class="section-subtitle" data-i18n="contact_subtitle">רוצה לדעת מידע נוסף? או לשאול שאלה? השאירו פרטים ואחזור אליכם בהקדם</p>
+                <div class="gold-line"></div>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-form-card reveal">
+                    <form class="contact-form" onsubmit="return false;">
+                        <input type="text" placeholder="שם" data-i18n-ph="ph_name" required>
+                        <input type="email" placeholder="אימייל" data-i18n-ph="ph_email" required>
+                        <button type="submit" class="btn-submit" data-i18n="btn_send_now">שלחו עכשיו</button>
+                    </form>
+                </div>
+                <div class="contact-info-card reveal">
+                    <a href="tel:0505209930" class="contact-info-item">
+                        <div class="contact-icon phone">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                        </div>
+                        <div>
+                            <div class="contact-info-label" data-i18n="c_phone">טלפון</div>
+                            <div class="contact-info-value">050-520-9930</div>
+                        </div>
+                    </a>
+                    <a href="mailto:tuvi@pencia.co.il" class="contact-info-item">
+                        <div class="contact-icon email">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </div>
+                        <div>
+                            <div class="contact-info-label" data-i18n="c_email">אימייל</div>
+                            <div class="contact-info-value">tuvi@pencia.co.il</div>
+                        </div>
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=972505209930" target="_blank" rel="noopener" class="contact-info-item">
+                        <div class="contact-icon whatsapp">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        </div>
+                        <div>
+                            <div class="contact-info-label" data-i18n="c_whatsapp">וואטסאפ</div>
+                            <div class="contact-info-value" data-i18n="c_wa_val">שלחו הודעה</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-logo">טובי צברי</span>
+            <ul class="footer-links">
+                <li><a href="#" data-i18n="f_access">הצהרת נגישות</a></li>
+                <li><a href="#" data-i18n="f_rights">כל הזכויות שמורות</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- ═══ WHATSAPP FLOAT ═══ -->
+    <a href="https://api.whatsapp.com/send?phone=972505209930" target="_blank" rel="noopener" class="whatsapp-float" aria-label="שלח הודעה בוואטסאפ">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <!-- ═══ MOBILE BOTTOM BAR ═══ -->
+    <div class="mobile-bar">
+        <div class="mobile-bar-inner">
+            <a href="tel:0505209930">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                <span data-i18n="mb_call">דבר איתי</span>
+            </a>
+            <a href="https://api.whatsapp.com/send?phone=972505209930&text=הי%20טובי,%20אני%20מעוניין%20לשמוע%20פרטים%20נוספים" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                <span data-i18n="mb_wa">וואטסאפ</span>
+            </a>
+            <a href="mailto:tuvi@pencia.co.il">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <span data-i18n="mb_email">שלח מייל</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- ═══ SCRIPTS ═══ -->
+    <script>
+    // ─── Navigation ───
+    const burger = document.getElementById('burger');
+    const navOverlay = document.getElementById('navOverlay');
+    const navClose = document.getElementById('navClose');
+
+    burger.addEventListener('click', () => {
+        burger.classList.toggle('active');
+        navOverlay.classList.toggle('active');
+        document.body.style.overflow = navOverlay.classList.contains('active') ? 'hidden' : '';
+    });
+    navClose.addEventListener('click', closeNav);
+    document.querySelectorAll('.nav-mobile-link').forEach(l => l.addEventListener('click', closeNav));
+    function closeNav() {
+        burger.classList.remove('active');
+        navOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // ─── Header scroll ───
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 40));
+
+    // ─── Scroll reveal ───
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+
+    // ─── Pension Calculator ───
+    (function() {
+        const sliders = {
+            age: document.getElementById('ageSlider'),
+            retire: document.getElementById('retireSlider'),
+            salary: document.getElementById('salarySlider'),
+            savings: document.getElementById('savingsSlider'),
+            contrib: document.getElementById('contribSlider'),
+            returnRate: document.getElementById('returnSlider')
+        };
+
+        const values = {
+            age: document.getElementById('ageValue'),
+            retire: document.getElementById('retireValue'),
+            salary: document.getElementById('salaryValue'),
+            savings: document.getElementById('savingsValue'),
+            contrib: document.getElementById('contribValue'),
+            returnRate: document.getElementById('returnValue')
+        };
+
+        const fmt = n => new Intl.NumberFormat('he-IL').format(Math.round(n));
+
+        function calculate() {
+            const age = +sliders.age.value;
+            const retire = +sliders.retire.value;
+            const salary = +sliders.salary.value;
+            const savings = +sliders.savings.value;
+            const contrib = +sliders.contrib.value;
+            const annualReturn = +sliders.returnRate.value / 100;
+
+            // Update displayed values
+            values.age.textContent = age;
+            values.retire.textContent = retire;
+            values.salary.textContent = '₪' + fmt(salary);
+            values.savings.textContent = '₪' + fmt(savings);
+            values.contrib.textContent = '₪' + fmt(contrib);
+            values.returnRate.textContent = sliders.returnRate.value + '%';
+
+            const years = Math.max(0, retire - age);
+            const monthlyReturn = annualReturn / 12;
+            const totalMonths = years * 12;
+
+            // Future value = savings * (1+r)^n + contrib * [((1+r)^n - 1) / r]
+            let futureValue;
+            if (monthlyReturn === 0) {
+                futureValue = savings + contrib * totalMonths;
+            } else {
+                futureValue = savings * Math.pow(1 + monthlyReturn, totalMonths)
+                    + contrib * ((Math.pow(1 + monthlyReturn, totalMonths) - 1) / monthlyReturn);
+            }
+
+            // Annuity factor: assume 20 years of payout, same return rate
+            const payoutYears = 20;
+            const payoutMonths = payoutYears * 12;
+            let monthlyPension;
+            if (monthlyReturn === 0) {
+                monthlyPension = futureValue / payoutMonths;
+            } else {
+                monthlyPension = futureValue * monthlyReturn / (1 - Math.pow(1 + monthlyReturn, -payoutMonths));
+            }
+
+            const replacementRate = Math.round((monthlyPension / salary) * 100);
+
+            document.getElementById('monthlyPension').innerHTML =
+                '<span class="currency">₪</span>' + fmt(monthlyPension);
+            document.getElementById('replacementRate').textContent =
+                'שיעור החלפה: ' + replacementRate + '% מהשכר';
+            document.getElementById('totalSavings').textContent = '₪' + fmt(futureValue);
+            document.getElementById('yearsLeft').textContent = years;
+
+            drawChart(age, retire, savings, contrib, monthlyReturn);
+        }
+
+        function drawChart(age, retire, savings, contrib, monthlyReturn) {
+            const canvas = document.getElementById('pensionChart');
+            const ctx = canvas.getContext('2d');
+            const dpr = window.devicePixelRatio || 1;
+            const w = canvas.parentElement.offsetWidth;
+            const h = 200;
+            canvas.width = w * dpr;
+            canvas.height = h * dpr;
+            canvas.style.width = w + 'px';
+            canvas.style.height = h + 'px';
+            ctx.scale(dpr, dpr);
+
+            const years = Math.max(1, retire - age);
+            const pad = { top: 20, right: 20, bottom: 30, left: 10 };
+            const chartW = w - pad.left - pad.right;
+            const chartH = h - pad.top - pad.bottom;
+
+            // Calculate data points
+            const points = [];
+            let bal = savings;
+            for (let y = 0; y <= years; y++) {
+                points.push({ year: age + y, value: bal });
+                for (let m = 0; m < 12; m++) {
+                    bal = bal * (1 + monthlyReturn) + contrib;
+                }
+            }
+
+            const maxVal = Math.max(...points.map(p => p.value), 1);
+
+            // Draw gradient area
+            const grad = ctx.createLinearGradient(0, pad.top, 0, h - pad.bottom);
+            grad.addColorStop(0, 'rgba(201, 165, 92, 0.25)');
+            grad.addColorStop(1, 'rgba(201, 165, 92, 0.02)');
+
+            ctx.beginPath();
+            points.forEach((p, i) => {
+                const x = pad.left + (i / years) * chartW;
+                const y = pad.top + chartH - (p.value / maxVal) * chartH;
+                i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+            });
+            ctx.lineTo(pad.left + chartW, pad.top + chartH);
+            ctx.lineTo(pad.left, pad.top + chartH);
+            ctx.closePath();
+            ctx.fillStyle = grad;
+            ctx.fill();
+
+            // Draw line
+            ctx.beginPath();
+            points.forEach((p, i) => {
+                const x = pad.left + (i / years) * chartW;
+                const y = pad.top + chartH - (p.value / maxVal) * chartH;
+                i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+            });
+            ctx.strokeStyle = '#c9a55c';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            // End dot
+            const lastP = points[points.length - 1];
+            const lx = pad.left + chartW;
+            const ly = pad.top + chartH - (lastP.value / maxVal) * chartH;
+            ctx.beginPath();
+            ctx.arc(lx, ly, 4, 0, Math.PI * 2);
+            ctx.fillStyle = '#c9a55c';
+            ctx.fill();
+
+            // Axis labels
+            ctx.fillStyle = 'rgba(255,255,255,0.3)';
+            ctx.font = '11px Heebo';
+            ctx.textAlign = 'center';
+            ctx.fillText(age, pad.left, h - 8);
+            ctx.fillText(retire, pad.left + chartW, h - 8);
+            const midAge = Math.round(age + years / 2);
+            ctx.fillText(midAge, pad.left + chartW / 2, h - 8);
+
+            // Top value label
+            ctx.fillStyle = 'rgba(201, 165, 92, 0.6)';
+            ctx.textAlign = 'right';
+            ctx.fillText('₪' + new Intl.NumberFormat('he-IL').format(Math.round(lastP.value)), lx - 8, ly - 10);
+        }
+
+        // Bind sliders
+        Object.values(sliders).forEach(s => s.addEventListener('input', calculate));
+        calculate();
+    })();
+
+    // ─── Language Toggle ───
+    const i18n = {
+        en: {
+            logo: 'Tuvi Tzabari',
+            tagline: 'Retirement Guidance & Financial Planning',
+            nav_about: 'About',
+            nav_services: 'How I Can Help',
+            nav_calc: 'Pension Calculator',
+            nav_testimonials: 'Testimonials',
+            nav_contact: 'Contact',
+            lang_toggle: 'עברית',
+            hero_label: 'Certified Financial Planner (CFP)',
+            hero_title: 'Approaching <span>Retirement?</span>',
+            hero_text1: 'Retirement is the most significant financial decision you will ever make.<br>Assembling the right components for a retirement plan requires skill and experience.',
+            hero_text2: 'Objective guidance will help you make the right decisions and realize your aspirations.<br>I will be happy to assist you throughout the entire process with all relevant parties and provide you with a comprehensive package that creates significant financial value.',
+            btn_send: 'Send',
+            hero_phone: 'Prefer to talk? Call me at <a href="tel:0505209930">050-5209930</a>',
+            about_title: 'Trust. Experience. Professionalism.',
+            about_name: 'Tuvi Tzabari',
+            about_role: 'Financial Planner',
+            about_creds: 'Member of the Financial Planners Association of Israel (UFPI), holding a CFP\u00A0(Certified Financial Planner) certification from the International Council for Financial Planning — the highest professional accreditation in the field.',
+            about_bio: 'As a veteran financial planner, I help my clients optimally plan their financial lives after retirement for themselves and their families. From 1990 to 2011, I was the owner of a successful insurance agency. I decided to change direction due to requests from dozens of people seeking guidance and assistance in the complex retirement process. I find great satisfaction and purpose in standing by my clients.',
+            svc_title: 'How Can I Help You?',
+            svc_subtitle: 'In four key areas',
+            svc1_title: 'Retirement Planning',
+            svc1_desc: 'Mapping the pension products best suited for you and your spouse. <strong>Tailoring retirement plans precisely to your needs.</strong> Implementing the plans — filing forms, monitoring and ongoing oversight.',
+            svc2_title: 'Retirement Taxation',
+            svc2_desc: 'Most retirees are unaware of the tax benefits they are entitled to. I will map out all the benefits you deserve, <strong>in order to reduce pension taxation and sometimes even eliminate it entirely.</strong>',
+            svc3_title: 'Risk Management',
+            svc3_desc: 'Want to help your children buy an apartment, travel abroad once a year, and also save for assisted living? Financial framework management will help you plan your expenses for both the short and long term, <strong>and avoid critical mistakes.</strong>',
+            svc4_title: 'Personalized Investments',
+            svc4_desc: '<strong>Professional solutions</strong> for retirees with means who want to invest their money wisely. Investment planning is done according to the desired investment horizon, the investor\'s personality and various other components.',
+            btn_details: 'More Details',
+            calc_title: 'Pension Calculator',
+            calc_subtitle: 'Discover how much you\'ll receive in retirement — and how proper planning can change the picture',
+            calc_age: 'Current Age',
+            calc_retire: 'Retirement Age',
+            calc_salary: 'Monthly Gross Salary',
+            calc_savings: 'Current Pension Savings',
+            calc_contrib: 'Monthly Contribution (Employee + Employer)',
+            calc_return: 'Expected Annual Return',
+            calc_result_label: 'Your Expected Monthly Pension',
+            calc_total_label: 'Total Savings at Retirement',
+            calc_years_label: 'Years of Savings Remaining',
+            calc_cta: 'Want to know how to improve this result?',
+            calc_disclaimer: '* This calculation is an estimate only and does not constitute financial advice. Actual results may vary depending on market conditions, management fees, and other variables. For precise planning, contact us for a personal consultation.',
+            quote: 'People in their golden years have worked hard, raised families and accumulated rich life experience, yet <strong>their future is still ahead of them.</strong> They deserve to live comfortably, with minimal worries. They deserve to <strong>continue fulfilling dreams.</strong>',
+            test_title: 'Client Testimonials',
+            contact_title: 'I\'d Be Happy to Assist You',
+            contact_subtitle: 'Want to learn more? Or ask a question? Leave your details and I\'ll get back to you soon',
+            btn_send_now: 'Send Now',
+            c_phone: 'Phone',
+            c_email: 'Email',
+            c_whatsapp: 'WhatsApp',
+            c_wa_val: 'Send a Message',
+            f_access: 'Accessibility Statement',
+            f_rights: 'All Rights Reserved',
+            mb_call: 'Call Me',
+            mb_wa: 'WhatsApp',
+            mb_email: 'Send Email',
+            ph_name: 'Name',
+            ph_email: 'Email',
+        },
+        he: {
+            logo: 'טובי צברי',
+            tagline: 'ליווי בפרישה ותכנון פיננסי לגיל השלישי',
+            nav_about: 'קצת עלי',
+            nav_services: 'כיצד אוכל לעזור',
+            nav_calc: 'מחשבון פנסיוני',
+            nav_testimonials: 'ממליצים',
+            nav_contact: 'שמרו על קשר',
+            lang_toggle: 'English',
+            hero_label: 'מתכנן פיננסי מוסמך CFP',
+            hero_title: 'הגעת <span>לגיל פרישה?</span>',
+            hero_text1: 'פרישה היא ההחלטה הפיננסית הגדולה ביותר שתקבל בחייך.<br>הרכבת החלקים הנדרשים בתכנית פרישה דורשת מיומנות וניסיון.',
+            hero_text2: 'ליווי אובייקטיבי יסייע לך לקבל את ההחלטות הנכונות עבורך ולממש שאיפות.<br>אשמח לסייע לך בכל התהליך מול כל הגורמים הרלוונטיים ולהעניק לך מעטפת מלאה שתייצר עבורך ערך כלכלי משמעותי.',
+            btn_send: 'שלחו',
+            hero_phone: 'אם מעדיפים לשוחח, דברו איתי ב <a href="tel:0505209930">050-5209930</a>',
+            about_title: 'אמינות. ניסיון. מקצועיות.',
+            about_name: 'טובי צברי',
+            about_role: 'מתכנן פיננסי',
+            about_creds: 'חבר באיגוד המתכננים הפיננסיים בישראל (UFPI) בעל הכשרת CFP\u00A0(Certified Financial Planner) מטעם המועצה הבינלאומית לתכנון פיננסי, ההסמכה המקצועית הגבוהה ביותר בתחום.',
+            about_bio: 'כמתכנן פיננסי ותיק, אני מסייע ללקוחותיי לתכנן את החיים הפיננסיים שלאחר הפרישה באופן אופטימלי עבורם ועבור משפחתם. מ־1990 ועד 2011 שימשתי כבעלים של סוכנות ביטוח מצליחה. החלטתי לשנות כיוון מתוך צורך שעלה מפניות של עשרות אנשים שביקשו ליווי וסיוע בתהליך הפרישה המורכב. אני מלא סיפוק ותחושת ערך בעמידה לצידם של לקוחותיי.',
+            svc_title: 'כיצד אוכל לעזור לך?',
+            svc_subtitle: 'בארבעה תחומים עיקריים',
+            svc1_title: 'תכנון פרישה',
+            svc1_desc: 'מיפוי המוצרים הפנסיוניים המתאימים עבורך ועבור בן/בת הזוג שלך. <strong>התאמה של תכניות פרישה בהתאמה מדויקת לצרכים שלך.</strong> יישום התכניות בפועל – הגשת טפסים, מעקב ובקרה שוטפת.',
+            svc2_title: 'מיסוי פרישה',
+            svc2_desc: 'מרבית הפורשים אינם מודעים להטבות המס להם הם זכאים. אני אמפה עבורך את כל סל ההטבות שמגיע לך, <strong>על מנת להוזיל את המיסוי על הפנסיה ולעיתים אף לבטלו.</strong>',
+            svc3_title: 'ניהול סיכונים',
+            svc3_desc: 'רוצה לעזור לילדים לקנות דירה, לנסוע לחו"ל פעם בשנה, וגם לחסוך לדיור מוגן? ניהול מסגרת פיננסית תסייע לך לתכנן את ההוצאות שלך לטווח הקצר והארוך כאחד, <strong>ולהימנע מטעויות קריטיות.</strong>',
+            svc4_title: 'השקעות בהתאמה אישית',
+            svc4_desc: '<strong>מענה מקצועי</strong> לפורשים בעלי אמצעים, שרוצים להשקיע את כספם בחכמה. תכנון ההשקעה מתבצע בהתאם לטווח ההשקעה הרצוי, אישיותו של המשקיע ושלל מרכיבים נוספים.',
+            btn_details: 'לפרטים נוספים',
+            calc_title: 'מחשבון פנסיוני',
+            calc_subtitle: 'גלו כמה תקבלו בפנסיה — וכיצד תכנון נכון יכול לשנות את התמונה',
+            calc_age: 'גיל נוכחי',
+            calc_retire: 'גיל פרישה',
+            calc_salary: 'שכר חודשי ברוטו',
+            calc_savings: 'חיסכון פנסיוני קיים',
+            calc_contrib: 'הפקדה חודשית (עובד + מעסיק)',
+            calc_return: 'תשואה שנתית צפויה',
+            calc_result_label: 'הקצבה החודשית הצפויה שלך',
+            calc_total_label: 'סה"כ חיסכון בפרישה',
+            calc_years_label: 'שנות חיסכון נותרות',
+            calc_cta: 'רוצה לדעת כיצד לשפר את התוצאה?',
+            calc_disclaimer: '* החישוב הינו הערכה בלבד ואינו מהווה ייעוץ פיננסי. התוצאות בפועל עשויות להשתנות בהתאם לתנאי השוק, דמי ניהול, ומשתנים נוספים. לתכנון מדויק, צרו קשר לפגישת ייעוץ אישית.',
+            quote: 'אנשים בגיל השלישי עבדו קשה, גידלו משפחות וצברו ניסיון חיים עשיר אך <strong>עתידם עוד לפניהם.</strong> מגיע להם לחיות ברווחה, עם מינימום דאגות. מגיע להם <strong>להמשיך ולהגשים חלומות.</strong>',
+            test_title: 'לקוחות מספרים',
+            contact_title: 'אשמח לעמוד לרשותך',
+            contact_subtitle: 'רוצה לדעת מידע נוסף? או לשאול שאלה? השאירו פרטים ואחזור אליכם בהקדם',
+            btn_send_now: 'שלחו עכשיו',
+            c_phone: 'טלפון',
+            c_email: 'אימייל',
+            c_whatsapp: 'וואטסאפ',
+            c_wa_val: 'שלחו הודעה',
+            f_access: 'הצהרת נגישות',
+            f_rights: 'כל הזכויות שמורות',
+            mb_call: 'דבר איתי',
+            mb_wa: 'וואטסאפ',
+            mb_email: 'שלח מייל',
+            ph_name: 'שם',
+            ph_email: 'אימייל',
+        }
+    };
+
+    let currentLang = localStorage.getItem('pencia_lang') || 'he';
+
+    function applyLang(lang) {
+        currentLang = lang;
+        localStorage.setItem('pencia_lang', lang);
+        const html = document.documentElement;
+        html.lang = lang;
+        html.dir = lang === 'he' ? 'rtl' : 'ltr';
+
+        // Update the lang toggle button text
+        document.getElementById('langToggle').textContent = i18n[lang].lang_toggle;
+
+        // Update all data-i18n elements
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.dataset.i18n;
+            if (key === 'lang_toggle') return; // handled above
+            const val = i18n[lang][key];
+            if (!val) return;
+            if (el.dataset.i18nHtml) {
+                el.innerHTML = val;
+            } else {
+                el.textContent = val;
+            }
+        });
+
+        // Update placeholders
+        document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+            const key = el.dataset.i18nPh;
+            const val = i18n[lang][key];
+            if (val) el.placeholder = val;
+        });
+
+        // Swap credentials border side
+        const creds = document.querySelector('.about-credentials');
+        if (creds) {
+            creds.style.borderRight = lang === 'he' ? '3px solid var(--gold)' : 'none';
+            creds.style.borderLeft = lang === 'en' ? '3px solid var(--gold)' : 'none';
+            creds.style.textAlign = lang === 'he' ? 'right' : 'left';
+        }
+
+        // Fix form input direction
+        document.querySelectorAll('.hero-form input, .contact-form input').forEach(el => {
+            el.style.direction = lang === 'he' ? 'rtl' : 'ltr';
+        });
+    }
+
+    function toggleLang() {
+        applyLang(currentLang === 'he' ? 'en' : 'he');
+        closeNav();
+    }
+
+    // Apply saved language on load
+    if (currentLang !== 'he') applyLang(currentLang);
+
+    </script>
+    <script>
+    // ─── Testimonials Infinite Carousel ───
+    (function() {
+        var track = document.getElementById('testimonialTrack');
+        var wrapper = document.getElementById('testimonialWrapper');
+        if (!track || !wrapper) return;
+
+        // Duplicate cards for seamless loop
+        var originalHTML = track.innerHTML;
+        track.innerHTML = originalHTML + originalHTML;
+
+        var GAP = 24;
+        var SPEED = 0.5;
+        var pos = 0;
+        var paused = false;
+        var dragging = false;
+        var dragStartX = 0;
+        var dragStartPos = 0;
+        var setWidth = 0;
+
+        function measure() {
+            var allCards = track.querySelectorAll('.testimonial-card');
+            var count = allCards.length / 2;
+            var w = 0;
+            for (var i = 0; i < count; i++) {
+                w += allCards[i].offsetWidth + GAP;
+            }
+            if (w > 0) setWidth = w;
+        }
+        measure();
+        window.addEventListener('resize', measure);
+
+        // In RTL, the track is laid out right-to-left.
+        // We use positive translateX to scroll content leftward (revealing more cards).
+        // pos goes from 0 to setWidth, then wraps back to 0.
+        pos = 0;
+
+        function wrapPos() {
+            if (setWidth <= 0) return;
+            while (pos >= setWidth) pos -= setWidth;
+            while (pos < 0) pos += setWidth;
+        }
+
+        function tick() {
+            if (!paused && !dragging && setWidth > 0) {
+                pos += SPEED;
+            }
+            wrapPos();
+            track.style.transform = 'translateX(' + pos + 'px)';
+        }
+
+        // rAF for smooth animation
+        (function rafLoop() { tick(); requestAnimationFrame(rafLoop); })();
+        // Fallback for hidden tabs
+        setInterval(tick, 16);
+
+        // Hover pause
+        wrapper.addEventListener('mouseenter', function() { if (!dragging) paused = true; });
+        wrapper.addEventListener('mouseleave', function() { if (!dragging) paused = false; });
+
+        // Drag — mouse
+        wrapper.addEventListener('mousedown', function(e) {
+            dragging = true;
+            paused = true;
+            dragStartX = e.clientX;
+            dragStartPos = pos;
+            e.preventDefault();
+        });
+        window.addEventListener('mousemove', function(e) {
+            if (!dragging) return;
+            var dx = e.clientX - dragStartX;
+            pos = dragStartPos + dx;
+            wrapPos();
+        });
+        window.addEventListener('mouseup', function() {
+            if (!dragging) return;
+            dragging = false;
+            paused = false;
+        });
+
+        // Drag — touch
+        wrapper.addEventListener('touchstart', function(e) {
+            dragging = true;
+            paused = true;
+            dragStartX = e.touches[0].clientX;
+            dragStartPos = pos;
+        }, { passive: true });
+        wrapper.addEventListener('touchmove', function(e) {
+            if (!dragging) return;
+            var dx = e.touches[0].clientX - dragStartX;
+            pos = dragStartPos + dx;
+            wrapPos();
+        }, { passive: true });
+        wrapper.addEventListener('touchend', function() {
+            if (!dragging) return;
+            dragging = false;
+            paused = false;
+        });
+    })();
+    </script>
+</body>
+</html>
